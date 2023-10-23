@@ -1,6 +1,6 @@
 
 import { NextResponse } from "next/server"
-import { customSort, readFromFile, readFromUrl } from './utils'
+import { customSort, readFromUrl } from './utils'
 
 export async function POST(request) {
     try {

@@ -1,24 +1,24 @@
-const fs = require("fs");
-const { parse } = require("csv-parse");
+// const fs = require("fs");
+// const { parse } = require("csv-parse");
 
-const readFromFile = async () => {
-    let files = []
-    return new Promise(function (resolve, reject) {
-        fs.createReadStream("data.csv")
-            .pipe(parse({ delimiter: ",", from_line: 1 }))
-            .on("data", function (row) {
-                const fields = row[0].split(";")
-                files.push({
-                    createdAt: fields[0],
-                    filename: fields[1]
-                })
-                resolve(files)
-            })
-            .on("error", function (error) {
-                reject(error.message)
-            });
-    });
-}
+// const readFromFile = async () => {
+//     let files = []
+//     return new Promise(function (resolve, reject) {
+//         fs.createReadStream("data.csv")
+//             .pipe(parse({ delimiter: ",", from_line: 1 }))
+//             .on("data", function (row) {
+//                 const fields = row[0].split(";")
+//                 files.push({
+//                     createdAt: fields[0],
+//                     filename: fields[1]
+//                 })
+//                 resolve(files)
+//             })
+//             .on("error", function (error) {
+//                 reject(error.message)
+//             });
+//     });
+// }
 const readFromUrl = async () => {
     try {
         const res = await fetch('https://raw.githubusercontent.com/manasnisar/su-fsd/main/data.csv', {
@@ -84,7 +84,7 @@ const customSort = (items) => {
 }
 
 module.exports = {
-    readFromFile,
+    // readFromFile,
     customSort,
     readFromUrl
 }
