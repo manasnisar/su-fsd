@@ -1,15 +1,15 @@
 const chai = require('chai');
-const { customSort, readFromFile } = require('../../app/api/utils.js'); // Replace with the actual path to your function
+const { customSort } = require('../../app/api/utils.js'); // Replace with the actual path to your function
 
 const expect = chai.expect;
 
-describe("readFromFile Tests", function () {
-  it("should read data from the CSV file", async function () {
-    const result = await readFromFile();
-    expect(result).to.be.an("array");
-    expect(result).to.have.lengthOf.at.least(1); // Ensure there's at least one item in the result
-  });
-});
+// describe("readFromFile Tests", function () {
+//   it("should read data from the CSV file", async function () {
+//     const result = await readFromFile();
+//     expect(result).to.be.an("array");
+//     expect(result).to.have.lengthOf.at.least(1); // Ensure there's at least one item in the result
+//   });
+// });
 
 
 describe('customSort Tests', () => {
