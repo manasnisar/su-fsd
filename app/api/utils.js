@@ -19,6 +19,31 @@ const readFromFile = async () => {
             });
     });
 }
+const readFromUrl = async () => {
+    try {
+        const res = await fetch('https://raw.githubusercontent.com/manasnisar/su-fsd/main/data.csv', {
+            method: 'get',
+            headers: {
+                'content-type': 'text/csv;charset=UTF-8',
+            }
+        });
+
+        let data = await res.text();
+        data = data.split("\n")
+        const files = data.map(item => {
+            const fields = item.split(';')
+            return {
+                createdAt: fields[0],
+                filename: fields[1]
+            }
+        })
+        return files
+
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 
 const customSort = (items) => {
     return items.sort((a, b) => {
@@ -27,12 +52,12 @@ const customSort = (items) => {
 
         // Remove leading zeros and split the strings into parts
         const partsA = fileNameA.replace(/^0+/g, '').split(/(\d+)/);
-        if(partsA.length === 3) {
+        if (partsA.length === 3) {
             partsA[1] = partsA[1].replace(/^0+/g, '')
         }
 
         const partsB = fileNameB.replace(/^0+/g, '').split(/(\d+)/);
-        if(partsB.length === 3) {
+        if (partsB.length === 3) {
             partsB[1] = partsB[1].replace(/^0+/g, '')
         }
 
@@ -59,6 +84,7 @@ const customSort = (items) => {
 }
 
 module.exports = {
-    readFromFile, 
-    customSort
+    readFromFile,
+    customSort,
+    readFromUrl
 }

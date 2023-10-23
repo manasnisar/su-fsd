@@ -1,10 +1,10 @@
 
 import { NextResponse } from "next/server"
-import { customSort, readFromFile } from './utils'
+import { customSort, readFromFile, readFromUrl } from './utils'
 
 export async function POST(request) {
     try {
-        const files = await readFromFile();
+        const files = await readFromUrl();
         const { sort_by } = await request.json();
         let result;
 
